@@ -1,0 +1,43 @@
+name: lint_and_testing
+
+on:
+  pull_request:
+  workflow_dispatch:
+  
+permissions:
+  contents: read 
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      # 1. Run the Linter (Using the official golangci-lint action)
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.60 # Specify your preferred version
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      # 2. Run your Unit Tests
+      - name: Run Tests
+        run: go test -v ./...
