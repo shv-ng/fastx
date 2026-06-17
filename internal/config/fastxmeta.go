@@ -62,7 +62,7 @@ func WriteFastxMeta(path string, meta *FastxMeta) error {
 	}
 	defer f.Close()
 
-	err= toml.NewEncoder(f).Encode(&doc)
+	err = toml.NewEncoder(f).Encode(&doc)
 
 	return nil
 }

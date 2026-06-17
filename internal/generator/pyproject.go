@@ -9,5 +9,3 @@ type generator struct {
 func New(cfg *config.Config) *generator {
 	return &generator{cfg: cfg}
 }
-
-
