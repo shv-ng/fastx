@@ -8,7 +8,7 @@ import (
 
 var rootCmd = &cobra.Command{
 	Use:   "fastx",
-	Short: "Bootstraps a new FastAPI project interactively.",
+	Short: "fastx is a cli tool, that scaffold FastAPI project",
 }
 
 func Execute() {
@@ -19,5 +19,4 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
